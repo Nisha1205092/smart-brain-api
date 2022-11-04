@@ -64,7 +64,22 @@ app.get('/profile/:id', (req, res) => {
 		}
 	})
 	if (!found) {
-		return res.status(404).json('not found');
+		return res.status(400).json('not found');
+	}
+})
+
+app.put('/image', (req, res) => {
+	const {id} = req.body;
+	let found = false;
+	database.users.forEach(user => {
+		if (user.id === id) {
+			found = true;
+			user.entries++;
+			return res.json(user.entries);
+		}
+	})
+	if (!found) {
+		return res.status(400).json('not found');
 	}
 })
 
