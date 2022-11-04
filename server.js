@@ -29,7 +29,7 @@ const database = {
 }
 
 app.get('/', (req, res) => {
-	res.send('This is working');
+	res.send(database.users);
 })
 
 app.post('/signin', (req, res) => {
@@ -52,6 +52,20 @@ app.post('/register', (req, res) => {
 		joined: new Date()	
 	})
 	res.json(database.users[database.users.length - 1]);
+})
+
+app.get('/profile/:id', (req, res) => {
+	const {id} = req.params;
+	let found = false;
+	database.users.forEach(user => {
+		if (user.id === id) {
+			found = true;
+			return res.json(user);
+		}
+	})
+	if (!found) {
+		return res.status(404).json('not found');
+	}
 })
 
 app.listen(3000, () => {
