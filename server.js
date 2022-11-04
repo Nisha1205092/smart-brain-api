@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 
 //instead of body-parser
+//to make req.body work properly
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
@@ -39,6 +40,20 @@ app.post('/signin', (req, res) => {
 		res.status(400).json('error signing in');
 	}
 })
+
+app.post('/register', (req, res) => {
+	const {email, name, password} = req.body;
+	database.users.push({
+		id: '125',
+		name: name,
+		email: email, 
+		password: password,
+		entries: 0,
+		joined: new Date()	
+	})
+	res.json(database.users[database.users.length - 1]);
+})
+
 app.listen(3000, () => {
 	console.log('app is running on port 3000');
 })
