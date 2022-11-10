@@ -1,6 +1,22 @@
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
+const knex = require('knex');
+
+const db = knex({
+  client: 'pg',
+  connection: {
+    host : '127.0.0.1',
+    port : 5432,
+    user : 'aminarahman',
+    password : '',
+    database : 'smart-brain'
+  }
+});
+
+db.select('*').from('users').then(data => {
+	console.log(data);
+}); //shows the current data in 'users' table 
 
 const app = express();
 
@@ -64,14 +80,20 @@ app.post('/register', (req, res) => {
     // Store hash in your password DB.
     	console.log('hash ' + hash);
 	});
-	database.users.push({
-		id: '125',
-		name: name,
-		email: email, 
-		password: password,
-		entries: 0,
-		joined: new Date()	
-	})
+	// database.users.push({
+	// 	id: '125',
+	// 	name: name,
+	// 	email: email, 
+	// 	password: password,
+	// 	entries: 0,
+	// 	joined: new Date()	
+	// })
+	db('users').insert({
+		email: email,
+		name: name, 
+		joined: new Date()
+	}).then(console.log);
+
 	res.json(database.users[database.users.length - 1]);
 })
 
@@ -104,6 +126,6 @@ app.put('/image', (req, res) => {
 	}
 })
 
-app.listen(3000, () => {
-	console.log('app is running on port 3000');
+app.listen(3002, () => {
+	console.log('app is running on port 3002');
 })
