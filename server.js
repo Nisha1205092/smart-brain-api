@@ -14,9 +14,10 @@ const db = knex({
   }
 });
 
-db.select('*').from('users').then(data => {
-	console.log(data);
-}); //shows the current data in 'users' table 
+// db.select('*').from('users')
+// 	.then(data => {
+// 		console.log(data);
+// 	}); //shows the current data in 'users' table 
 
 const app = express();
 
@@ -88,13 +89,19 @@ app.post('/register', (req, res) => {
 	// 	entries: 0,
 	// 	joined: new Date()	
 	// })
-	db('users').insert({
-		email: email,
-		name: name, 
-		joined: new Date()
-	}).then(console.log);
+	db('users')
+		.returning('*')
+		.insert({
+			email: email,
+			name: name, 
+			joined: new Date()
+		})
+		.then(user => {
+			res.json(user);
+		})
+		.catch(err => res.status(400).json('unable to register'));
 
-	res.json(database.users[database.users.length - 1]);
+	// res.json(database.users[database.users.length - 1]);
 })
 
 app.get('/profile/:id', (req, res) => {
