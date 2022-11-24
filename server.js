@@ -28,7 +28,6 @@ const db = knex({
   }
 });
 
-db.connect();
 // db.select('*').from('users')
 // 	.then(data => {
 // 		console.log(data);
