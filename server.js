@@ -23,7 +23,7 @@ const profile = require('./controllers/profile');
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString: process.env.DATABASE_URL,
+    connectionString: "postgres://hqxrzbzsyobeoq:b3c61e019fdce9ae850fa4bd43f14ec64f0f542478bb593937c809958977f3c4@ec2-52-1-17-228.compute-1.amazonaws.com:5432/d6ce23pld94jvk",
     ssl: {
     	rejectUnauthorized: false
     }
