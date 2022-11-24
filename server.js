@@ -19,11 +19,12 @@ const profile = require('./controllers/profile');
 //     database : 'smart-brain'
 //   }
 // });
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({
   client: 'pg',
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
   }
 });
 // db.select('*').from('users')
