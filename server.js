@@ -9,17 +9,23 @@ const image = require('./controllers/image');
 const profile = require('./controllers/profile');
 
 
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//     host : '127.0.0.1',
+//     port : 5432,
+//     user : 'aminarahman',
+//     password : '',
+//     database : 'smart-brain'
+//   }
+// });
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    port : 5432,
-    user : 'aminarahman',
-    password : '',
-    database : 'smart-brain'
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
   }
 });
-
 // db.select('*').from('users')
 // 	.then(data => {
 // 		console.log(data);
