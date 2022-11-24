@@ -19,7 +19,7 @@ const profile = require('./controllers/profile');
 //     database : 'smart-brain'
 //   }
 // });
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({
   client: 'pg',
   connection: {
@@ -27,6 +27,8 @@ const db = knex({
     ssl: true
   }
 });
+
+db.connect();
 // db.select('*').from('users')
 // 	.then(data => {
 // 		console.log(data);
