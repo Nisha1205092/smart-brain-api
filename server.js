@@ -9,24 +9,24 @@ const image = require('./controllers/image');
 const profile = require('./controllers/profile');
 
 
-// const db = knex({
-//   client: 'pg',
-//   connection: {
-//     host : '127.0.0.1',
-//     port : 5432,
-//     user : 'aminarahman',
-//     password : '',
-//     database : 'smart-brain'
-//   }
-// });
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: false,
-  },
+    host : '127.0.0.1',
+    port : 5432,
+    user : 'aminarahman',
+    password : '',
+    database : 'smart-brain'
+  }
 });
+
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: false,
+//   },
+// });
 
 // db.select('*').from('users')
 // 	.then(data => {
@@ -56,6 +56,6 @@ app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)})
 
 
-app.listen(process.env.PORT || 3002, () => {
-	console.log(`app is running on port ${process.env.PORT}`);
+app.listen(3030, () => {
+	console.log(`app is running on port 3030`);
 })
