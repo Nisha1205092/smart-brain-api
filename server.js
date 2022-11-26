@@ -9,17 +9,19 @@ const image = require('./controllers/image');
 const profile = require('./controllers/profile');
 
 
+//for Render
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
+    host : 'dpg-ce12ahg2i3mkuce8j94g-a',
     port : 5432,
     user : 'aminarahman',
-    password : '',
-    database : 'smart-brain'
+    password : 'fFbbRN01BcuUpVkbFSHgfRa84hPnxapA',
+    database : 'smartbrain_25ht'
   }
 });
 
+// for heroku
 // const db = knex({
 //   client: 'pg',
 //   connection: {
