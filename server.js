@@ -13,6 +13,8 @@ const profile = require('./controllers/profile');
 const db = knex({
   client: 'pg',
   connection: {
+  	connectionString: 'dpg-ce12ahg2i3mkuce8j94g-a.singapore-postgres.render.com',
+  	ssl: {rejectUnauthorized: false},	
     host : 'dpg-ce12ahg2i3mkuce8j94g-a',
     port : 5432,
     user : 'aminarahman',
