@@ -7,7 +7,7 @@ const signin = require('./controllers/signin');
 const register = require('./controllers/register');
 const image = require('./controllers/image');
 const profile = require('./controllers/profile');
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3031;
 
 //for Render
 const db = knex({
