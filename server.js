@@ -7,16 +7,16 @@ const signin = require('./controllers/signin');
 const register = require('./controllers/register');
 const image = require('./controllers/image');
 const profile = require('./controllers/profile');
-
+const PORT = process.env.PORT || 3030;
 
 //for Render
 const db = knex({
   client: 'pg',
   connection: {
-  	connectionString: 'dpg-ce12ahg2i3mkuce8j94g-a.singapore-postgres.render.com',
-  	//connectionString: 'postgres://aminarahman:fFbbRN01BcuUpVkbFSHgfRa84hPnxapA@dpg-ce12ahg2i3mkuce8j94g-a/smartbrain_25ht',
+  	//connectionString: 'dpg-ce12ahg2i3mkuce8j94g-a.singapore-postgres.render.com',
+  	connectionString: 'postgres://aminarahman:fFbbRN01BcuUpVkbFSHgfRa84hPnxapA@dpg-ce12ahg2i3mkuce8j94g-a/smartbrain_25ht',
   	ssl: {rejectUnauthorized: false},	
-    host : 'dpg-ce12ahg2i3mkuce8j94g-a',
+    host : 'dpg-ce12ahg2i3mkuce8j94g-a.singapore-postgres.render.com',
     port : 5432,
     user : 'aminarahman',
     password : 'fFbbRN01BcuUpVkbFSHgfRa84hPnxapA',
@@ -61,6 +61,6 @@ app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)})
 
 
-app.listen(process.env.PORT, () => {
-	console.log(`app is running on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+	console.log(`app is running on port ${PORT}`);
 })
