@@ -14,7 +14,7 @@ const db = knex({
   client: 'pg',
   connection: {
   	//connectionString: 'dpg-ce12ahg2i3mkuce8j94g-a.singapore-postgres.render.com',
-  	connectionString: 'postgres://aminarahman:fFbbRN01BcuUpVkbFSHgfRa84hPnxapA@dpg-ce12ahg2i3mkuce8j94g-a/smartbrain_25ht',
+  	connectionString: process.env.DATABASE_URL,
   	ssl: {rejectUnauthorized: false},	
     host : 'dpg-ce12ahg2i3mkuce8j94g-a.singapore-postgres.render.com',
     port : 5432,
