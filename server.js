@@ -14,13 +14,13 @@ const db = knex({
   client: 'pg',
   connection: {
   	//connectionString: 'dpg-ce12ahg2i3mkuce8j94g-a.singapore-postgres.render.com',
-  	connectionString: process.env.DATABASE_URL,
+  	connectionString: process.env.DATABASE_URL, 
   	ssl: {rejectUnauthorized: false},	
-    host : 'dpg-ce12ahg2i3mkuce8j94g-a.singapore-postgres.render.com',
+    host : process.env.DATABASE_HOST,
     port : 5432,
-    user : 'aminarahman',
-    password : 'fFbbRN01BcuUpVkbFSHgfRa84hPnxapA',
-    database : 'smartbrain_25ht'
+    user : process.env.DATABASE_USER,
+    password : process.env.DATABASE_PW,
+    database : process.env.DATABSE_DB
   }
 });
 
