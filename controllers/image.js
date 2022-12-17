@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const Clarifai = require('clarifai');
 const USER_ID = 'nisha-1205092';
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
